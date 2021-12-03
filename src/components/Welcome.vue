@@ -18,7 +18,7 @@
     </div>
 
     <div class="container">
-      <input type="text" v-model="message" /> {{ message }}
+      <input type="text" v-model="student.name" />
     </div>
 
     <div class="container">
@@ -48,9 +48,9 @@ export default {
     },
   },
   watch: {
-    message() {
-      console.log('message changed');
-      Vue.set(this.student, 'name', this.message);
+    seconds(val, oldVal) {
+      console.log(val, oldVal);
+      this.count = this.seconds;
     },
   },
   data() {
