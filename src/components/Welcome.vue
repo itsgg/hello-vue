@@ -1,6 +1,5 @@
 <template>
   <div>
-
     {{ student }}
 
     <name-card :student="student">Name Card</name-card>
@@ -31,13 +30,11 @@
 <script>
 import Vue from 'vue';
 
-import NameCard from './NameCard';
-import blink from '../directives/blink';
+import NameCard from '@/components/NameCard';
+import blink from '@/directives/blink';
 
 export default {
-  mixins: [
-    blink,
-  ],
+  mixins: [blink],
   mounted() {
     console.log('Component Mounted');
     Vue.nextTick(() => {
