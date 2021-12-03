@@ -19,10 +19,15 @@
 
     <div class="container">
       <button @click="incrementAge">+age</button>
+      <button @click.once="incrementAge">+age once</button>
     </div>
 
     <div class="container">
-      <input type="text" v-model="student.name" />
+      <input
+        type="text"
+        v-model="student.name"
+        @keyup.enter="nameFilled"
+      />
     </div>
 
     <div class="container">
@@ -52,6 +57,9 @@ export default {
   methods: {
     incrementAge() {
       Vue.set(this.student, 'age', this.student.age + 1);
+    },
+    nameFilled() {
+      console.log('name filled');
     },
   },
   computed: {
