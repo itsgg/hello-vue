@@ -1,8 +1,12 @@
 <template>
   <div>
     <div class="container">
-      <h1>Hello {{ student.name }}</h1>
-      <p>You are {{ student.age }} years old!</p>
+      <h1 ref="name">Hello {{ student.name | truncate }}</h1>
+      <p ref="age">You are {{ student.age }} years old!</p>
+    </div>
+
+    <div class="container">
+      {{ refs }}
     </div>
 
     <div class="container">
@@ -30,11 +34,20 @@
 <script>
 import Vue from 'vue';
 
+const NAME_LENGTH = 10;
+
 export default {
   created() {
     setInterval(() => {
       this.seconds = new Date().getSeconds();
     }, 1000);
+  },
+  filters: {
+    truncate(value) {
+      return value.length > NAME_LENGTH
+        ? `${value.slice(0, NAME_LENGTH)}...`
+        : value;
+    },
   },
   methods: {
     incrementAge() {
@@ -46,10 +59,13 @@ export default {
       const today = new Date();
       return `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
     },
+    refs() {
+      return this.$refs;
+    },
   },
   watch: {
-    seconds(val, oldVal) {
-      console.log(val, oldVal);
+    // seconds(val, oldVal) {
+    seconds() {
       this.count = this.seconds;
     },
   },
