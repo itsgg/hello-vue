@@ -1,11 +1,6 @@
 <template>
   <div>
-    <div class="container">
-      <h1 ref="name">Hello {{ student.name | truncate }}</h1>
-      <p ref="age">You are {{ student.age }} years old!</p>
-    </div>
-
-    <name-card />
+    <name-card :student="student"></name-card>
 
     <div class="container">
       {{ refs }}
@@ -39,8 +34,6 @@ import Vue from 'vue';
 
 import NameCard from './NameCard';
 
-const NAME_LENGTH = 10;
-
 Vue.directive('blink', {
   bind(el, binding) {
     let isVisible = true;
@@ -62,13 +55,6 @@ export default {
     setInterval(() => {
       this.seconds = new Date().getSeconds();
     }, 1000);
-  },
-  filters: {
-    truncate(value) {
-      return value.length > NAME_LENGTH
-        ? `${value.slice(0, NAME_LENGTH)}...`
-        : value;
-    },
   },
   methods: {
     incrementAge() {
