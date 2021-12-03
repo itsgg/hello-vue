@@ -26,6 +26,7 @@
     </div>
 
     <router-link to="/about">About</router-link>
+    <router-link :to="{ name: 'About' }">About (Named)</router-link>
   </div>
 </template>
 
