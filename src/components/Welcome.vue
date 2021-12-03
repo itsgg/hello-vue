@@ -1,6 +1,9 @@
 <template>
   <div>
-    <name-card :student="student"></name-card>
+
+    {{ student }}
+
+    <name-card :student="student">Name Card</name-card>
 
     <div class="container">
       {{ refs }}
@@ -17,10 +20,6 @@
     <div class="container">
       <button @click="incrementAge">+age</button>
       <button @click.once="incrementAge">+age once</button>
-    </div>
-
-    <div class="container">
-      <input type="text" v-model="student.name" @keyup.enter="nameFilled" />
     </div>
 
     <div class="container">

@@ -1,7 +1,11 @@
 <template>
   <div class="container">
-    <h1 ref="name">Hello {{ student.name | truncate }}</h1>
+    <h1><slot></slot></h1>
+    <h2 ref="name">Hello {{ student.name | truncate }}</h2>
     <p ref="age">You are {{ student.age }} years old!</p>
+    <div class="container">
+      <input type="text" v-model="student.name" @keyup.enter="nameFilled" />
+    </div>
   </div>
 </template>
 
