@@ -5,6 +5,8 @@
       <p ref="age">You are {{ student.age }} years old!</p>
     </div>
 
+    <name-card />
+
     <div class="container">
       {{ refs }}
     </div>
@@ -15,7 +17,7 @@
       </ul>
     </div>
 
-    <div v-blink.value=100 class="container">{{ seconds }} : {{ count }}</div>
+    <div v-blink.value="100" class="container">{{ seconds }} : {{ count }}</div>
 
     <div class="container">
       <button @click="incrementAge">+age</button>
@@ -34,6 +36,8 @@
 
 <script>
 import Vue from 'vue';
+
+import NameCard from './NameCard';
 
 const NAME_LENGTH = 10;
 
@@ -88,6 +92,9 @@ export default {
     seconds() {
       this.count = this.seconds;
     },
+  },
+  components: {
+    NameCard,
   },
   data() {
     return {
