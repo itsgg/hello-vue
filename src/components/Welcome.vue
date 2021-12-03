@@ -32,18 +32,12 @@
 import Vue from 'vue';
 
 import NameCard from './NameCard';
-
-Vue.directive('blink', {
-  bind(el, binding) {
-    let isVisible = true;
-    setInterval(() => {
-      isVisible = !isVisible;
-      el.style.visibility = isVisible ? 'visible' : 'hidden'; // eslint-disable-line no-param-reassign
-    }, binding.value || 500);
-  },
-});
+import blink from '../directives/blink';
 
 export default {
+  mixins: [
+    blink,
+  ],
   mounted() {
     console.log('Component Mounted');
     Vue.nextTick(() => {
