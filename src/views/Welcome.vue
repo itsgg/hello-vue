@@ -24,6 +24,8 @@
     <div class="container">
       {{ timeCounter }}
     </div>
+
+    <router-link to="/about">About</router-link>
   </div>
 </template>
 
