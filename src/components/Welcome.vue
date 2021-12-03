@@ -15,7 +15,7 @@
       </ul>
     </div>
 
-    <div class="container">{{ seconds }} {{ count }}</div>
+    <div v-blink class="container">{{ seconds }} : {{ count }}</div>
 
     <div class="container">
       <button @click="incrementAge">+age</button>
@@ -36,6 +36,16 @@
 import Vue from 'vue';
 
 const NAME_LENGTH = 10;
+
+Vue.directive('blink', {
+  bind(el) {
+    let isVisible = true;
+    setInterval(() => {
+      isVisible = !isVisible;
+      el.style.visibility = isVisible ? 'visible' : 'hidden'; // eslint-disable-line no-param-reassign
+    }, 500);
+  },
+});
 
 export default {
   mounted() {
