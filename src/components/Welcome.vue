@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <h1>Hello {{ student.name }}!</h1>
+      <h1>Hello {{ student.name }}</h1>
       <p>You are {{ student.age }} years old!</p>
     </div>
 
@@ -11,9 +11,7 @@
       </ul>
     </div>
 
-    <div class="container">
-      {{ seconds }}
-    </div>
+    <div class="container">{{ seconds }} {{ count }}</div>
 
     <div class="container">
       <button @click="incrementAge">+age</button>
@@ -49,6 +47,12 @@ export default {
       return `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
     },
   },
+  watch: {
+    message() {
+      console.log('message changed');
+      Vue.set(this.student, 'name', this.message);
+    },
+  },
   data() {
     return {
       message: 'Hello Vue!',
@@ -57,19 +61,10 @@ export default {
         age: 30,
       },
       seconds: 0,
+      count: 0,
       items: [
-        {
-          name: 'One',
-          quantity: 1,
-        },
-        {
-          name: 'Two',
-          quantity: 2,
-        },
-        {
-          name: 'Three',
-          quantity: 3,
-        },
+        { name: 'One', quantity: 1 },
+        { name: 'Two', quantity: 2 },
       ],
     };
   },
