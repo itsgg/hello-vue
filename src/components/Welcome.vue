@@ -23,11 +23,7 @@
     </div>
 
     <div class="container">
-      <input
-        type="text"
-        v-model="student.name"
-        @keyup.enter="nameFilled"
-      />
+      <input type="text" v-model="student.name" @keyup.enter="nameFilled" />
     </div>
 
     <div class="container">
@@ -42,6 +38,12 @@ import Vue from 'vue';
 const NAME_LENGTH = 10;
 
 export default {
+  mounted() {
+    console.log('Component Mounted');
+    Vue.nextTick(() => {
+      console.log('DOM is ready');
+    });
+  },
   created() {
     setInterval(() => {
       this.seconds = new Date().getSeconds();
