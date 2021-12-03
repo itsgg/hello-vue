@@ -1,12 +1,31 @@
 <template>
   <div>
-    <h1>Hello {{ student.name }}!</h1>
-    <p>You are {{ student.age }} years old!</p>
-    <ul v-for="item in items" :key="item.name">
-      <li>{{ item.name }} : {{ item.quantity }}</li>
-    </ul>
-    <p>{{ seconds }}</p>
-    <button @click="incrementAge">+age</button>
+    <div class="container">
+      <h1>Hello {{ student.name }}!</h1>
+      <p>You are {{ student.age }} years old!</p>
+    </div>
+
+    <div class="container">
+      <ul v-for="item in items" :key="item.name">
+        <li>{{ item.name }} : {{ item.quantity }}</li>
+      </ul>
+    </div>
+
+    <div class="container">
+      {{ seconds }}
+    </div>
+
+    <div class="container">
+      <button @click="incrementAge">+age</button>
+    </div>
+
+    <div class="container">
+      <input type="text" v-model="message" /> {{ message }}
+    </div>
+
+    <div class="container">
+      {{ timeCounter }}
+    </div>
   </div>
 </template>
 
@@ -24,8 +43,15 @@ export default {
       Vue.set(this.student, 'age', this.student.age + 1);
     },
   },
+  computed: {
+    timeCounter() {
+      const today = new Date();
+      return `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
+    },
+  },
   data() {
     return {
+      message: 'Hello Vue!',
       student: {
         name: 'John Doe',
         age: 30,
@@ -49,3 +75,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.container {
+  margin: 10px;
+}
+</style>
