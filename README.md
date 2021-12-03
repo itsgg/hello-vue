@@ -1,6 +1,6 @@
-# hello
+# hello-vue
 
-> A Vue.js project
+> Play with vue...
 
 ## Build Setup
 
